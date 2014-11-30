@@ -14,7 +14,14 @@ meta(name="viewport" content="width=device-width, initial-scale=1.0")
 //- Env
 meta(name="env" content=settings.env)
 
-input#path(type='text' placeholder='/enter/a/directory/here')
+input#path(type='text' placeholder='/enter/a/directory/here' autofocus)
+
+#meta
+  b.name Name
+
+  span.version-wrapper
+    span  v
+    i.version version
 
 script(src='/bower/jquery/dist/jquery.js')
 

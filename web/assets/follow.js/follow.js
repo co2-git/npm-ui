@@ -1,6 +1,6 @@
 ;(function () {
   
-  function follow (object) {
+  function Follow (object) {
 
     var self = this;
 
@@ -15,27 +15,32 @@
         changes.forEach(function (change) {
           if ( self.__followers[change.name] ) {
             self.__followers[change.name].forEach(function (follower) {
-              follower(change.object[change.name]);
+              follower(change.object[change.name], change.oldValue, change.type);
             });
           }
         });
       });
     }
+
+    else {
+
+    }
   }
 
-  follow.prototype.follow = function(prop, follower) {
+  Follow.prototype.spy = function(prop, follower) {
     if ( ! this.__followers[prop] ) {
       this.__followers[prop] = [];
     }
+
     this.__followers[prop].push(follower);
+
+    follower(this[prop]);
+
+    return this;
   };
 
-  function _follow (object) {
-    return new follow(object);
-  }
+  module.exports = Follow;
 
-  module.exports = _follow;
-
-  return _follow;
+  return Follow;
 
 })();
