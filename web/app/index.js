@@ -9,11 +9,11 @@
   var follower = follow(model);
 
   follower.follow('path', function (path) {
-    console.log(path);
+    $('#path').val(path);
   });
 
-  setTimeout(function () {
-    model.path = 'cool';
+  $('#path').on('keyup', function () {
+    model.path = $(this).val();
   });
 
 })();

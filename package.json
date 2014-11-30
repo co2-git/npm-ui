@@ -1,11 +1,17 @@
 {
   "name": "npm-ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "node + npm UI",
   "main": "index.js",
   "scripts": {
+  	"start": "bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "body-parser": "~1.9.3",
+    "express": "~4.10.4",
+    "jade": "~1.8.0"
+  }
 }
