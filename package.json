@@ -1,10 +1,10 @@
 {
   "name": "npm-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "node + npm UI",
   "main": "index.js",
   "scripts": {
-  	"start": "bin/server.js",
+    "start": "bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +13,9 @@
     "body-parser": "~1.9.3",
     "express": "~4.10.4",
     "jade": "~1.8.0"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.10",
+    "gulp-sass": "~1.1.0"
   }
 }

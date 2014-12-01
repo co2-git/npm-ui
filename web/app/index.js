@@ -23,11 +23,17 @@
       else {
         $('.version-wrapper').show();
       }
-    }
+    },
+
+    action: function (action) {
+      $('#action').text(model.actions[action].name);
+    },
   }
 
   var model = {
     path: null,
+    actions: [{ name: 'Init' }],
+    action: 0,
     module: {
       package: {
         name: null,
@@ -39,6 +45,8 @@
   new Follow(model)
     
     .spy('path', binders.path)
+
+    .spy('action', binders.action)
 
     .spy('module', function (module, previous, event) {
       binders.name(module.package ? module.package.name : null);
