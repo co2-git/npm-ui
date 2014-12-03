@@ -34,12 +34,24 @@
 
     action: function (action) {
       $('#action').text(model.actions[action].name);
+
+      if ( model.actions[action].name === 'Help' ) {
+        $('#action').addClass('warning');
+      }
+
+      else {
+        $('#action').removeClass('warning');
+      }
     },
   }
 
   var model = {
-    path: null,
-    actions: [{ name: 'Init' }],
+    path: '/home/francois/Dev/npm-ui',
+    actions: [
+      { name: 'Help' },
+      { name: 'Init' },
+      { name: '✔' },
+    ],
     action: 0,
     module: {
       package: {
@@ -58,6 +70,18 @@
     .spy('module', function (module, previous, event) {
       binders.name(module.package ? module.package.name : null);
       binders.version(module.package ? module.package.version : null);
+
+      if ( ! model.path ) {
+        model.action = 0;
+      }
+
+      else if ( ! module.stat || ! module.package ) {
+        model.action = 1;
+      }
+
+      else {
+        model.action = 2;
+      }
     });
 
 
@@ -76,8 +100,24 @@
             model.module = data;
           }
         });
+    },
+
+    init: function () {
+      $.ajax({
+        url: '/api/init',
+        type: 'POST',
+        data: { path: model.path }
+      })
+        .success(function (data) {
+          if ( data.path === model.path ) {
+            delete data.path;
+            model.module = data;
+          }
+        });
     }
   };
+
+  ctrl.switch('/home/francois/Dev/npm-ui');
 
   /** View events */
 
@@ -87,6 +127,12 @@
 
   $('#path').on('change', function () {
     ctrl.switch($(this).val());
+  });
+
+  $('#action').on('click', function () {
+    if ( model.actions[model.action].name === 'Init' ) {
+      ctrl.init();
+    }
   });
 
 })();
