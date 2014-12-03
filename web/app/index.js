@@ -12,6 +12,13 @@
 
     name: function (name) {
       $('.name').text(name);
+
+      if ( ! name ) {
+        $('.name').hide();
+      }
+      else {
+        $('.name').show();
+      }
     },
 
     version: function (version) {

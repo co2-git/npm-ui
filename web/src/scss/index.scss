@@ -1,3 +1,46 @@
 @import "../../bower_components/foundation/scss/normalize.scss";
+@import "../../bower_components/foundation/scss/foundation/components/forms";
+@import "../../bower_components/foundation/scss/foundation/components/buttons";
+@import "../../bower_components/foundation/scss/foundation/components/button-groups";
 
-body { background: #ccc }
+button {
+  margin: 0
+}
+
+.button-group {
+  padding: 0
+}
+
+body {
+  background: #ccc
+}
+
+.npm-ui {
+  width: 135px;
+  background: #333;
+  color: #999
+}
+
+#path {
+  width: calc(100% - 135px);
+  font-size: 22px;
+  padding: .5em;
+  min-height: 2em
+}
+
+#meta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  color: #fff;
+
+  .name {
+    font-weight: bold
+  }
+
+  #action {
+    float: right
+  }
+}

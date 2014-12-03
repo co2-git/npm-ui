@@ -17,15 +17,21 @@ meta(name="env" content=settings.env)
 //- Stylesheet
 link(rel="Stylesheet" href="/css/index.css")
 
-input#path(type='text' placeholder='/enter/a/directory/here' autofocus)
+button.right.small.npm-ui npm-ui v
+  span=info.version
+
+input#path(type='text' placeholder='/enter/a/directory/here' autofocus )
 
 #meta
-  b.name Name
+  button#action Action
 
-  span.version-wrapper
-    span  v
-    i.version version
-    button#action Action
+  ul.button-group
+    li
+      button.name.secondary Name
+    li
+      button.secondary.version-wrapper
+        span  v
+        i.version version
 
 script(src='/bower/jquery/dist/jquery.js')
 
